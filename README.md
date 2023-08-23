@@ -23,7 +23,12 @@ style={{color: 'red'}}
     const Button = styled.button`
     all style code here
     The code which directly affects button then don't use .botton{} directly write the code
-    And code for elements which are inside the button for them use $:hover , $:label
-    `
+    And code for elements which are inside the button for them use &:hover , &:label
     ```
+
+    - Adding classes dynamically to the style componenet which are created using styled components 
+        - &.invalid{ style code }
+            - Here & is root element or class to which we want to attach a new class 
+            - <FormHandler {!isValid && 'invalid'}>  this code add invalid class when isValid is false.
+
 
