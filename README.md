@@ -31,4 +31,11 @@ style={{color: 'red'}}
             - Here & is root element or class to which we want to attach a new class 
             - <FormHandler {!isValid && 'invalid'}>  this code add invalid class when isValid is false.
 
-
+        - Another way is using props.
+            - Just pass the props like how we pass to normal component and handle it inside styled components
+                syntax 
+                ```
+                <FormHandler invalid = {!isValid}> 
+                <!-- if invalid is true it shows the red clr otherwise black -->
+                border: 1px solid ${props => (props.invalid ? 'red': '#ccc')};
+                ```

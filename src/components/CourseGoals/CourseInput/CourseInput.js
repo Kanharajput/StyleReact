@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Button from '../../UI/Button/Button';
-import './CourseInput.css';
 import styled from 'styled-components';
 
 const FormHandler = styled.div`
@@ -10,12 +9,13 @@ const FormHandler = styled.div`
     font-weight: bold;
     display: block;
     margin-bottom: 0.5rem;
+    color: ${props => (props.invalid ? 'red' : 'black')};
   }
 
   & input {
     display: block;
     width: 100%;
-    border: 1px solid #ccc;
+    border: 1px solid ${props => (props.invalid ? 'red': '#ccc')};
     font: inherit;
     line-height: 1.5rem;
     padding: 0 0.25rem;
@@ -25,11 +25,6 @@ const FormHandler = styled.div`
     outline: none;
     background: #fad0ec;
     border-color: #8b005d;
-  }
-
-  &.invalid input{
-    color: red;
-    border-color: red;
   }
 
   &.invalid label{
@@ -60,7 +55,8 @@ const CourseInput = props => {
 
   return (
     <form onSubmit={formSubmitHandler}> 
-      <FormHandler className={!isValid && 'invalid'}>
+    {/* invalid true if isValid false */}
+      <FormHandler invalid = {!isValid}>
         <label>Course Goal</label>
         <input type="text" onChange={goalInputChangeHandler} />
       </FormHandler>
