@@ -15,32 +15,40 @@ style={{color: 'red'}}
         - Access the invalid class in css like form-control.invalid 
 
 ### Use Styled Components to style
-    - Using it we can write the css code in js file and it also not tied up with other components. Because we
-        rendered components on a single page and at last two components with same className elements will lead to problems.
-    - It also handles props and also let us pass dynamic styles.
-    - syntax
-    ```
-    const Button = styled.button`
-    all style code here
-    `;
-    ```
-    The code which directly affects button then don't use .botton{} directly write the code
-    And code for elements which are inside the button for them use &:hover , &:label
+- Using it we can write the css code in js file and it also not tied up with other components. Because we
+    rendered components on a single page and at last two components with same className elements will lead to problems.
+- It also handles props and also let us pass dynamic styles.
+- syntax    
+```
+const Button = styled.button`
+all style code here
+`;
+```
+The code which directly affects button then don't use .botton{} directly write the code
+And code for elements which are inside the button for them use &:hover , &:label
 
-    - Adding classes dynamically to the style componenet which are created using styled components 
-        - &.invalid{ style code }
-            - Here & is root element or class to which we want to attach a new class 
-            - <FormHandler {!isValid && 'invalid'}>  this code add invalid class when isValid is false.
+- Adding classes dynamically to the style componenet which are created using styled components 
+    - &.invalid{ style code }
+        - Here & is root element or class to which we want to attach a new class 
+        - <FormHandler {!isValid && 'invalid'}>  this code add invalid class when isValid is false.
 
-        - Another way is using props.
-            - Just pass the props like how we pass to normal component and handle it inside styled components
-                syntax 
-                ```
-                <FormHandler invalid = {!isValid}> 
-                <!-- if invalid is true it shows the red clr otherwise black -->
-                border: 1px solid ${props => (props.invalid ? 'red': '#ccc')};
-                ```
-    - Css Modules: This modules hepl us store styles of component seperatly from the component logical code.
-        - Change file names from button.css to button.module.css
-        - Import like ```import style from './button.module.css';```
-        - <FormHandler className={style.button}> attaching button class to FormHandler
+    - Another way is using props.
+        - Just pass the props like how we pass to normal component and handle it inside styled components
+            syntax 
+            ```
+            <FormHandler invalid = {!isValid}> 
+            <!-- if invalid is true it shows the red clr otherwise black -->
+            border: 1px solid ${props => (props.invalid ? 'red': '#ccc')};
+            ```
+- **Css Modules:** This modules hepl us store styles of component seperatly from the component logical code.
+    - Change file names from button.css to button.module.css
+    - Import like ```import style from './button.module.css';```
+    - <FormHandler className={style.button}> attaching button class to FormHandler.
+
+    - Adding dynamic value in css modules
+        - Syntax of dynamically adding classes
+        ```<div className={`${style['form-control']} ${!isValid && style.invalid}`}>```
+        - Added invalid class with form-control 
+        - style.form-control won't work because of dash so use list syntax
+    
+    - Media queries are written same as we write in normal css as css modules are also at last a css file.
