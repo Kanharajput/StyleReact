@@ -22,9 +22,10 @@ style={{color: 'red'}}
     ```
     const Button = styled.button`
     all style code here
+    `;
+    ```
     The code which directly affects button then don't use .botton{} directly write the code
     And code for elements which are inside the button for them use &:hover , &:label
-    ```
 
     - Adding classes dynamically to the style componenet which are created using styled components 
         - &.invalid{ style code }
@@ -39,3 +40,7 @@ style={{color: 'red'}}
                 <!-- if invalid is true it shows the red clr otherwise black -->
                 border: 1px solid ${props => (props.invalid ? 'red': '#ccc')};
                 ```
+    - Css Modules: This modules hepl us store styles of component seperatly from the component logical code.
+        - Change file names from button.css to button.module.css
+        - Import like ```import style from './button.module.css';```
+        - <FormHandler className={style.button}> attaching button class to FormHandler
